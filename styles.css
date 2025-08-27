@@ -82,3 +82,10 @@ button {
 #ver-tabela-btn:hover {
     background-color: #0056b3;
 }
+
+@media only screen and (max-width: 600px) {
+    .container{
+        width: 85vw;
+        padding: 1rem;
+    }
+}
