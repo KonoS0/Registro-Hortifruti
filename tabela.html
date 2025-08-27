@@ -6,13 +6,42 @@
     <title>Tabela de Perdas</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+        }
+
         .container h1{
             text-align: center;
         }
+
+        .bnt-box{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="button"]{
+            width: 100%;
+            display: block;
+            margin: 1rem 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="button"]:hover{
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
         .table-container {
             margin-top: 2rem;
             width: 100%;
-            overflow-x: auto;
+            overflow-x: hidden;
         }
 
         table {
@@ -28,6 +57,12 @@
 
         th {
             background-color: #f2f2f2;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                max-width: 90vw;
+            }
         }
     </style>
 </head>
