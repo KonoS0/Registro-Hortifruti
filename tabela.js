@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento para o botão de voltar
     voltarBtn.addEventListener('click', () => {
-        window.location.href = 'main.html';
+        window.location.href = 'index.html';
     });
 
     // Renderiza a tabela ao carregar a página
