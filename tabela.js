@@ -36,9 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const quantidadeFormatada = parseFloat(registro.quantidade).toFixed(2);
             
             const tr = document.createElement('tr');
+            // Verifica se a imagem existe para o produto e cria a tag <img>
+            // A pasta 'imagens/' é onde 'teste 1.jpg' deve estar
+            const imagemHtml = registro.imagem
+                ? `<img src="imagens/${registro.imagem}" alt="Código de Barras" class="tabela-imagem">`
+                : '';
             tr.innerHTML = `
                 <td><input type="checkbox" class="linha-checkbox" data-chave="${chave}"></td>
-                <td>${registro.produto}</td>
+                <td>${registro.produto} ${imagemHtml}</td>
                 <td>${quantidadeFormatada}</td>
                 <td>${registro.medida}</td>
             `;
