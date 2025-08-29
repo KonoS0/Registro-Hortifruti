@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Melão Dino KG",
                 "Melão Orange KG",
                 "Melão Pele de Sapo KG",
-                "Melão Rey",
+                "Melão Rey KG",
                 "Mexerica Carioca KG",
                 "Mexerica Murcote KG",
                 "Mexerica Ponkan KG",
