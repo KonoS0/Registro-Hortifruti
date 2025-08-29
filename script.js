@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Batata Baroa KG",
                 "Batata Bolinha KG",
                 "Batata Doce Branca KG",
-                "Batata Doce Roxa",
+                "Batata Doce Roxa KG",
                 "Batata Inglesa KG",
                 "Berinjela KG",
                 "Beterraba KG",
