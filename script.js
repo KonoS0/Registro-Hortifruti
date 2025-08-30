@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imagem = 'maca-gran-smith-barcode.png';
         }
         else if(produto === "Maçã Nacional Gala KG"){
-            imagem = 'maca-gala-barcode.png';
+            imagem = 'maca-nacional-gala-barcode.png';
         }
         else if(produto === "Maçã Nacional Fuji KG"){
             imagem = 'maca-nacional-fuji-barcode.png';
