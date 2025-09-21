@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const adicionarBtn = document.getElementById('adicionar-btn');
     const verTabelaBtn = document.getElementById('ver-tabela-btn');
     const produtosList = document.getElementById('produtos-list');
-    const imprimirBtn = document.getElementById('imprimir-btn'); // Obter o novo botão
 
     // Dados dos produtos
     const produtos = {
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Melão Dino KG",
                 "Melão Orange KG",
                 "Melão Pele de Sapo KG",
-                "Melão Rey",
+                "Melão Rey KG",
                 "Mexerica Carioca KG",
                 "Mexerica Murcote KG",
                 "Mexerica Ponkan KG",
@@ -308,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imagem = 'maca-gran-smith-barcode.png';
         }
         else if(produto === "Maçã Nacional Gala KG"){
-            imagem = 'maca-gala-barcode.png';
+            imagem = 'maca-nacional-gala-barcode.png';
         }
         else if(produto === "Maçã Nacional Fuji KG"){
             imagem = 'maca-nacional-fuji-barcode.png';
@@ -438,4 +437,3 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'tabela.html';
     });
 });
-
