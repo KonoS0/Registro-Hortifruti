@@ -5,10 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const adicionarBtn = document.getElementById('adicionar-btn');
     const verTabelaBtn = document.getElementById('ver-tabela-btn');
     const produtosList = document.getElementById('produtos-list');
-    const caixasSelect = document.getElementById('caixas');
-    const caixasQuantidadeGroup = document.getElementById('caixas-quantidade-group');
-    const quantidadeCaixasInput = document.getElementById('quantidade-caixas');
-    
+    const imprimirBtn = document.getElementById('imprimir-btn'); // Obter o novo botão
+
     // Dados dos produtos
     const produtos = {
         legumes: ["Abóbora Italiana KG",
@@ -64,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Laranja Lima KG",
                 "Laranja Pera Rio KG",
                 "Limão KG",
-                "Limão Siciliano KG",
                 "Maçã Argentina/Chilena KG",
                 "Maçã Gran Smith KG",
                 "Maçã Nacional Gala KG",
@@ -85,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Melão Dino KG",
                 "Melão Orange KG",
                 "Melão Pele de Sapo KG",
-                "Melão Rey KG",
+                "Melão Rey",
                 "Mexerica Carioca KG",
                 "Mexerica Murcote KG",
                 "Mexerica Ponkan KG",
@@ -94,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Pêra D'anjou KG",
                 "Pêra Forelles KG",
                 "Pêra Importada KG",
-                "Pera KG",
-                "Pera Portuguesa KG",
+                "Pêra KG",
+                "Pêra Portuguesa KG",
                 "Pera Williams KG",
-                "Pessego Importado KG",
-                "Pessego Nacional KG",
+                "Pêssego Importado KG",
+                "Pêssego Nacional KG",
                 "Pitaia KG"
             ],
         verduras:["Repolho Roxo KG",
@@ -133,16 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     adicionarBtn.addEventListener('click', () => {
-        const quantidadeDigitada = parseFloat(quantidadeInput.value);
-        const caixas = caixasSelect.value;
-        let quantidadeFinal = quantidadeDigitada;
+        const produto = produtoInput.value.trim();
+        const quantidade = parseFloat(quantidadeInput.value);
+        const medida = medidaSelect.value;
 
-        // Se a opção de caixas for "sim", subtrai o peso de acordo com a quantidade de caixas
-        if (caixas === 'sim') {
-            const quantidadeCaixas = parseFloat(quantidadeCaixasInput.value);
-            if (quantidadeCaixas > 0) {
-                quantidadeFinal = Math.max(0, quantidadeDigitada - (1.7 * quantidadeCaixas));
-            }
+        if (!produto || quantidade <= 0) {
+            alert('Por favor, preencha todos os campos corretamente.');
+            return;
         }
 
         let registros = carregarDados();
@@ -314,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imagem = 'maca-gran-smith-barcode.png';
         }
         else if(produto === "Maçã Nacional Gala KG"){
-            imagem = 'maca-nacional-gala-barcode.png';
+            imagem = 'maca-gala-barcode.png';
         }
         else if(produto === "Maçã Nacional Fuji KG"){
             imagem = 'maca-nacional-fuji-barcode.png';
@@ -424,15 +418,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Verifica se o produto já existe e soma a quantidade
         if (registros[chave]) {
-            registros[chave].quantidade += quantidadeFinal;
+            registros[chave].quantidade += quantidade;
         } else {
             registros[chave] = {
-            produto: produto,
-            quantidade: quantidadeFinal,
-            medida: medida,
-            imagem: imagem
-        };
-}
+                produto: produto,
+                quantidade: quantidade,
+                medida: medida,
+                imagem: imagem
+            };
+        }
 
         salvarDados(registros);
         alert('Dados adicionados com sucesso!');
@@ -440,15 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
         quantidadeInput.value = '1';
     });
 
-    caixasSelect.addEventListener('change', () => {
-        if (caixasSelect.value === 'sim') {
-            caixasQuantidadeGroup.style.display = 'block';
-        } else {
-            caixasQuantidadeGroup.style.display = 'none';
-        }
-    });
-
     verTabelaBtn.addEventListener('click', () => {
         window.location.href = 'tabela.html';
     });
 });
+
