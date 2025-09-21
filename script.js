@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const adicionarBtn = document.getElementById('adicionar-btn');
     const verTabelaBtn = document.getElementById('ver-tabela-btn');
     const produtosList = document.getElementById('produtos-list');
-
+    const caixasSelect = document.getElementById('caixas');
+    
     // Dados dos produtos
     const produtos = {
         legumes: ["Abóbora Italiana KG",
@@ -61,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Laranja Lima KG",
                 "Laranja Pera Rio KG",
                 "Limão KG",
+                "Limão Siciliano KG",
                 "Maçã Argentina/Chilena KG",
                 "Maçã Gran Smith KG",
                 "Maçã Nacional Gala KG",
@@ -90,11 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Pêra D'anjou KG",
                 "Pêra Forelles KG",
                 "Pêra Importada KG",
-                "Pêra KG",
-                "Pêra Portuguesa KG",
+                "Pera KG",
+                "Pera Portuguesa KG",
                 "Pera Williams KG",
-                "Pêssego Importado KG",
-                "Pêssego Nacional KG",
+                "Pessego Importado KG",
+                "Pessego Nacional KG",
                 "Pitaia KG"
             ],
         verduras:["Repolho Roxo KG",
