@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const verTabelaBtn = document.getElementById('ver-tabela-btn');
     const produtosList = document.getElementById('produtos-list');
     const caixasSelect = document.getElementById('caixas');
+    const caixasQuantidadeGroup = document.getElementById('caixas-quantidade-group');
+    const quantidadeCaixasInput = document.getElementById('quantidade-caixas');
     
     // Dados dos produtos
     const produtos = {
@@ -131,13 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     adicionarBtn.addEventListener('click', () => {
-        const produto = produtoInput.value.trim();
-        const quantidade = parseFloat(quantidadeInput.value);
-        const medida = medidaSelect.value;
+        const quantidadeDigitada = parseFloat(quantidadeInput.value);
+        const caixas = caixasSelect.value;
+        let quantidadeFinal = quantidadeDigitada;
 
-        if (!produto || quantidade <= 0) {
-            alert('Por favor, preencha todos os campos corretamente.');
-            return;
+        // Se a opção de caixas for "sim", subtrai o peso de acordo com a quantidade de caixas
+        if (caixas === 'sim') {
+            const quantidadeCaixas = parseFloat(quantidadeCaixasInput.value);
+            if (quantidadeCaixas > 0) {
+                quantidadeFinal = Math.max(0, quantidadeDigitada - (1.7 * quantidadeCaixas));
+            }
         }
 
         let registros = carregarDados();
@@ -419,15 +424,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Verifica se o produto já existe e soma a quantidade
         if (registros[chave]) {
-            registros[chave].quantidade += quantidade;
+            registros[chave].quantidade += quantidadeFinal;
         } else {
             registros[chave] = {
-                produto: produto,
-                quantidade: quantidade,
-                medida: medida,
-                imagem: imagem
-            };
-        }
+            produto: produto,
+            quantidade: quantidadeFinal,
+            medida: medida,
+            imagem: imagem
+        };
+}
 
         salvarDados(registros);
         alert('Dados adicionados com sucesso!');
@@ -435,8 +440,15 @@ document.addEventListener('DOMContentLoaded', () => {
         quantidadeInput.value = '1';
     });
 
+    caixasSelect.addEventListener('change', () => {
+        if (caixasSelect.value === 'sim') {
+            caixasQuantidadeGroup.style.display = 'block';
+        } else {
+            caixasQuantidadeGroup.style.display = 'none';
+        }
+    });
+
     verTabelaBtn.addEventListener('click', () => {
         window.location.href = 'tabela.html';
     });
 });
-
